@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMaster</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+   <div class="container-fluid py-4 px-5">
+    <header class="d-flex justify-content-between align-items-start mb-5">
+        <div>
+            <h1 class="fw-bold">Meu Dia <span class="text-primary">TaskMaster</span></h1>
+            <p class="dataTime" class="text-secondary text-uppercase small fw-bold"></p>
+        </div>
+        <div class="card border-0 shadow-sm p-3" style="border-radius: 20px; min-width: 200px;">
+            <div class="d-flex align-items-center gap-3">
+                <div class="position-relative d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                    <div class="progress-circle">0%</div>
+                </div>
+                <div>
+                    <h4 class="attTarefasConcluidas mb-0 fw-bold">0/0</h4>
+                    <small class="text-muted">Tarefas concluídas</small>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- MODAL DE EDITAR TASK-->
+    <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Task</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+            <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Task:</label>
+                    <input type="text" class="form-control editTask"></input>
+                    
+                <div class="textClassEdit">
+                    <h6 >Selecione a classe da sua Task</h6>
+                    <select class="form-select" aria-label="Default select example">
+                            <option class="classAtual"></option>
+                            <option class="classExtra" value="1"></option>
+                            <option class="classExtra" value="2"></option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary saveEdit">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE CUSTOMIZAR TEMPO-->
+    <div class="modal fade" id="modalCustom" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Customizar tempo</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        
+        <div class="modal-body">
+            <form>
+                <div class="mb-3">
+                <p> Defina uma duração personalizada para sua sessão de trabalho!</p>
+                    <label for="recipient-name" class="col-form-label">Personalize a duração(minutos):</label>
+                    <input type="number" class="form-control customDurationInput" placeholder="ex: 25"></input>
+                </div>
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Personalize a duração da pausa(minutos):</label>
+                    <input type="number" class="form-control customPauseInput" placeholder="ex: 5"></input>
+                </div>
+            </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary saveCustomDuration " data-bs-dismiss="modal">Definir tempo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE DELETAR TASK-->
+    <div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir Task</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="mb-3">
+                <p> Você tem certeza de que quer deletar essa tarefa? Essa ação não pode ser desfeita.</p>
+                </div>
+            </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger deleteTaskBtn" data-bs-dismiss="modal">Excluir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Estatisticas -->
+    <div class="row g-4">
+        <div class="col-lg-3">
+            
+            <div class="card stats-card p-4 shadow-sm mb-4">
+                <h5 class="fw-bold mb-4" style="color: #1b3370;">Estatísticas</h5>
+                <div class="list-group list-group-flush">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span><i class="bi bi-briefcase-fill text-primary me-2"></i> Trabalho</span>
+                        <span class="estatisticasTrabalho fw-bold">0</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span><i class="bi bi-person-fill me-2 " style="color: #a855f7;"></i> Pessoal</span>
+                        <span class="estatisticasPessoal fw-bold">0</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span><i class="bi bi-lightning-charge-fill text-danger me-2"></i> Urgente</span>
+                        <span class="estatisticasUrgente fw-bold">0</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Cronometro -->
+            <div class="card shadow-sm" style="border-radius: 25px; border: none;">
+                <div class="card p-4 shadow-sm" style="border-radius: 25px; border: none;">
+                    <h4 class="fw-bold mb-3 text-center" style="color: #1b3370;">Cronometro</h4>
+                    <!-- Botoes superiores-->
+                <div class="d-flex justify-content-center gap-2 flex-wrap mb-4">
+                    <button class="btn btn-sm btn-outline-primary active px-3 btnPomodoro">Pomodoro</button>
+                    <button class="btn btn-sm btn-outline-primary px-3 btn-ShortBreak">Short Break</button>
+                    <button class="btn btn-sm btn-outline-primary px-3 btn-LongBreak">Long Break</button>
+                    <button class="btn btn-sm btn-outline-primary px-3 btn-Custom" data-bs-toggle="modal" data-bs-target="#modalCustom">Custom</button>
+                </div>
+
+            <div class="d-flex flex-column align-items-center gap-3 border-color=primary p-4 rounded" style="border: 2px solid #6280ce;">
+                <!-- CÍRCULO -->
+                <div class="d-flex justify-content-center align-items-center rounded-circle mb-2" style="width: 100%; max-width: 320px; aspect-ratio: 1 / 1; border: 2px solid #6280ce;">
+                    <div class="text-center">
+                        <h2 class="display-Tempo m-0 fw-bold fs-3" style="color:#335bc2ec;">00:00</h2>
+                    </div>
+                </div>
+
+                <!-- BOTÕES inferiores -->
+                <div class="d-flex gap-2 flex-wrap justify-content-center">
+                    <button type="button" class="btn btn-primary btn-sm px-3 btn-Start">Start</button>
+                    <button type="button" class="btn btn-secondary btn-sm px-3 btn-Stop">Stop</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm px-3 btn-Reset">Reset</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+            <!-- INPUT TAREFAS -->        
+        <div class="col-lg-9">
+            <div class="card border-0 shadow-sm p-4 mb-5" style="border-radius: 25px;">
+                <div class="d-flex gap-3 mb-4">
+                    <input type="text" class="form-control input-task border-0 flex-grow-1 inputTarefas" placeholder="O que precisa ser feito?">
+                    <button class="btn btn-primary btn-add shadow-sm btnAddTarefas" type="submit">+</i>
+                </div>
+                
+                <div class="d-flex gap-2">
+                    <button class="tag-pill  active btnTrabalho">Trabalho</button>
+                    <button class="tag-pill btnPessoal">Pessoal</button>
+                    <button class="tag-pill btnUrgente">Urgente</button>
+                </div>
+            </div>
+            <!-- Exibir tarefas -->
+            <section class="tasks-container">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h2 class="h4 fw-bold mb-0">Minhas Tarefas</h2>
+                    <div class="d-flex gap-3">
+                        <button class="filter-link active btnTodas">TODAS</button>
+                        <button class="filter-link btnPendentes">PENDENTES</button>
+                        <button class="filter-link btnFeitas">FEITAS</button>
+                    </div>
+                </div>
+                <div class="empty-state text-center py-5">
+                    <div class="area-vazia">
+                        <i class="bi bi-clipboard-check empty-icon d-block mb-3 removerIcon"></i>
+                        <p>Tudo limpo! Adicione uma tarefa para começar.</p>
+                </div>
+                    <ul class="list-group exibirTarefas">
+                </ul> 
+            </div>
+            </section>
+        </div>
+    </div>
+</div>    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script type="module" src="script.js"> </script>
+</body>
+</html>

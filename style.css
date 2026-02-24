@@ -1,0 +1,176 @@
+body { 
+    background-color: #f0f2f5; 
+    padding: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+body > div:nth-child(1) {
+    flex-basis: 100%;
+}
+
+body > div:nth-child(2),
+body > div:nth-child(3) {
+    flex: 1;
+    min-width: 250px;
+}
+        
+        .stats-card {
+            border-radius: 25px;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            max-width: auto;
+            margin-top: 0;
+        }
+        
+        .stats-list-item {
+            border: none;
+            padding: 12px 20px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .icon-box {
+            font-size: 1.2rem;
+            margin-right: 15px;
+        }
+    
+        /* INPUT */
+        .todo-containerInput {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            flex: 1;
+            min-width: 320px;
+            max-width: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+
+        /* Estilização dos elementos internos */
+        .input-task {
+            background-color: #d8e8f8 !important;
+            border: none !important;
+            border-radius: 12px !important;
+            padding: 15px 20px !important;
+        }
+
+        .btn-add {
+            background-color: #2563eb;
+            color: white;
+            border-radius: 15px !important;
+            width: 55px;
+            height: 55px;
+            margin-left: 15px;
+            font-size: 1.8rem;
+            border: none;
+        }
+
+        .tag-pill {
+            padding: 8px 16px;
+            border: 1px solid #dee2e6;
+            border-radius: 50px;
+            font-size: clamp(0.65rem, 2.5vw, 0.95rem);
+            color: #495057;
+            text-decoration: none;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            min-width: 0;
+            max-width: 150px;
+            line-height: 1.2;
+            height: fit-content;
+        }
+
+        .tag-pill.active {
+            background-color: #eef2ff;
+            border-color: #2563eb;
+            color: #2563eb;
+        }
+
+        /* MINHAS TAREFAS */
+        .tasks-container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            flex: 1;
+            min-width: 320px;
+            max-width: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .container-botoes {
+            display: flex;
+            padding-top: 5px;
+            gap: 5px; /* espaço entre os botões */
+            max-width: 300px;
+            justify-content: center;
+            max-width: 250px;
+        }
+        .textClassEdit{
+            padding-top: 30px;
+        }
+
+
+        /* Título e Filtros */
+        .task-header h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0d1b3e;
+        }
+
+        .filter-link {
+            text-decoration: none;
+            color: #3c4452;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-left: 20px;
+            letter-spacing: 0.5px;
+            transition: 0.3s;
+            border: 1px solid #dee2e6;
+            background-color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+        }
+
+        .filter-link:hover, .filter-link.active {
+            color: #2563eb;
+            border: 1px solid #2563eb;
+
+        }
+
+        /* Área de Estado Vazio (Empty State) */
+        .empty-state-card {
+            background-color: transparent;
+            border: 2px dashed #dee2e6;
+            border-radius: 30px;
+            padding: 80px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+        }
+
+        .empty-icon {
+            font-size: 4rem;
+            color: #ced4da;
+            margin-bottom: 20px;
+        }
+
+        .empty-text {
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+
+        .displayTempo {
+        font-size: clamp(1.5rem, 10vw, 3rem);
+        line-height: 1;
+        white-space: nowrap; /* impede quebra */
+        color: #335bc2ec;
+
+        }
+
