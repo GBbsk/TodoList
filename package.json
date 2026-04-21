@@ -1,7 +1,7 @@
 {
-  "name": "semaforo",
+  "name": "todo-list",
   "version": "1.0.0",
-  "description": "",
+  "description": "Uma TodoList simples, com um timer para Pomodoro, utilizando Node.js, e HTML, CSS e JavaScript para o frontend.",
   "main": "server.js",
   "type": "commonjs",
   "scripts": {
@@ -9,7 +9,7 @@
     "dev": "nodemon server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Gabriel Brito",
   "license": "ISC",
   "dependencies": {
     "connect-livereload": "^0.6.1",
