@@ -1,9 +1,3 @@
-import { TimerModel } from '../models/Model.js';
-import { ViewTasks } from "../views/ViewTasks.js";
-import { ViewStats } from "../views/ViewStats.js";
-import { IDTASK } from "../utils/generatorID.js";
-
-
 export class ControllerTask {
     constructor(model, viewtasks, viewstats, idTask) {
         this.model = model;

@@ -1,4 +1,4 @@
-import { Validators } from '../utils/validators.js';
+
 
 export class TimerModel {
   constructor(tempoFoco = 25, tempoPausa = 5) {
@@ -83,32 +83,9 @@ export class TimerModel {
     localStorage.setItem(this.storageKey, JSON.stringify(tasks));
   }
 
-  // Atualiza o banco de dados completo (para atualizações em massa)
-  updateDatabase(tasks) {
-    if (!Array.isArray(tasks)) {
-      throw new Error('updateDatabase requer um array de tarefas');
-    }
-    localStorage.setItem(this.storageKey, JSON.stringify(tasks));
-  }
-
-  // Método legado mantido para compatibilidade
-  saveDatabase(task) {
-    this.addTask(task);
-  }
-
   delete(id) {
     const tasks = this.getAll().filter(i => i.id !== id);
     this.updateDatabase(tasks);
-  }
-
-  // Para ADICIONAR uma tarefa individual
-  addTask(task) {
-    if (!task || !task.id || !task.nome) {
-        throw new Error('Tarefa inválida');
-    }
-    const tasks = this.getAll();
-    tasks.push(task);
-    localStorage.setItem(this.storageKey, JSON.stringify(tasks));
   }
 
   // Para ATUALIZAR o banco inteiro (útil quando atualiza status, edita, etc)
